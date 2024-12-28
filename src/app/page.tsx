@@ -22,6 +22,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
+
         {isSignedIn ? (
           <div>
             <p>Welcome, {user?.firstName || user?.emailAddresses?.[0]?.emailAddress}</p>
