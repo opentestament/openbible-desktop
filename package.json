@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.9.6",
+    "@tauri-apps/api": "^2.1.1",
+    "@tauri-apps/plugin-deep-link": "^2.2.0",
+    "@tauri-apps/plugin-shell": "^2.2.0",
     "next": "15.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

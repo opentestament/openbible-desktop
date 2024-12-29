@@ -1,47 +1,32 @@
-'use client';
 
-import React from "react";
-import { useUser, useClerk } from "@clerk/nextjs";
+'use client'
+import { useEffect } from 'react'
 
 export default function Home() {
-  const { isLoaded, isSignedIn, user } = useUser();
-  const clerk = useClerk();
+  useEffect(() => {
+  
+    const listener = (event: MessageEvent) => {
+      if (event.data.type === 'deep-link') {
+        console.log('Received deep link:', event.data.url)
+      }
+    }
+    window.addEventListener('message', listener)
+    return () => window.removeEventListener('message', listener)
+  }, [])
 
-  if (!isLoaded) {
-    return <div>Loading...</div>;
+  const handleLogin = () => {
+
+    window.open('http://localhost:3000/login', '_blank')
   }
 
-  const handleSignIn = () => {
-    clerk.openSignIn();
-  };
-
-  const handleSignOut = () => {
-    clerk.signOut();
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-
-        {isSignedIn ? (
-          <div>
-            <p>Welcome, {user?.firstName || user?.emailAddresses?.[0]?.emailAddress}</p>
-            <button 
-              onClick={handleSignOut}
-              className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            >
-              Sign Out
-            </button>
-          </div>
-        ) : (
-          <button 
-            onClick={handleSignIn}
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-          >
-            Sign In
-          </button>
-        )}
-      </div>
-    </div>
-  );
+    <main className="flex min-h-screen flex-col items-center justify-center">
+      <button
+        onClick={handleLogin}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Login
+      </button>
+    </main>
+  )
 }
