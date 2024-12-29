@@ -10,6 +10,13 @@
     "productName": "openbible",
     "version": "0.1.0"
   },
+  "plugins": {
+    "deep-link": {
+      "desktop": {
+        "schemes": ["myapp"]
+      }
+    }
+  },
   "tauri": {
     "allowlist": {
       
