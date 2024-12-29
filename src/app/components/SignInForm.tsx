@@ -1,4 +1,5 @@
 import { FaFacebook, FaApple, FaGoogle } from "react-icons/fa"
+import Link from 'next/link';
 
 export function SignInForm() {
 
@@ -7,7 +8,7 @@ export function SignInForm() {
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-amber-800">LOG IN</h2>
-                <p className="text-amber-600 mt-2">"For where two or three gather in my name, there I am with them" - Matthew 18:20</p>
+                <p className="text-amber-600 mt-2">&quot;For where two or three gather in my name, there I am with them&quot; - Matthew 18:20</p>
             </div>
             <form className="space-y-4">
                 <div>
@@ -55,7 +56,7 @@ export function SignInForm() {
                 </div>
             </div>
             <p className="mt-8 text-center text-sm text-amber-600">
-                Don't have an account? Sign Up
+                Don&#39;t have an account? <Link href="./register" className="hover:underline">Sign Up</Link>
             </p>
             </div>
         </div>
